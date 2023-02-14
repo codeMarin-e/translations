@@ -1,0 +1,34 @@
+{
+    "name": "marinar/translations",
+    "description": "Translations modulе",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marin",
+            "email": "marin@dev.nddesign.no"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Marinar\\Translations\\": "src/"
+        }
+    },
+
+    "require": {
+        "marinar/marinar": "*",
+        "marinar/waavi_translation": "*"
+    },
+    "extra": {
+        "marinar": {
+            "module": true,
+            "plugin": false,
+            "addon_to": false
+        },
+        "laravel": {
+            "aliases": {
+                "MarinarTranslations": "Marinar\\Translations\\MarinarTranslations"
+            }
+        }
+    }
+}
