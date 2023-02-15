@@ -12,7 +12,7 @@
     use Illuminate\Support\Facades\View;
     use Illuminate\Support\Str;
     use League\Flysystem\Filesystem;
-    use Symfony\Component\Process\Process;
+    use Illuminate\Support\Facades\Process;
     use Waavi\Translation\Models\Translation;
     use Illuminate\Support\Facades\Validator;
 
@@ -33,15 +33,12 @@
         private function searchInPath($search, $path) {
             if(!realpath($path)) return [];
             $command = Package::replaceEnvCommand("grep --include=\*.php -rnw -e '{$search}'");
-            $process = Process::fromShellCommandline( $command );
-            $process->setWorkingDirectory( $path );
-            // $process->setTty(true);
-            $process->setTimeout(null);
-            $process->run();
+
+            $process = Process::forever()->path($path)->run( $command );
             // executes after the command finishes
             $return = [];
-            if ($process->isSuccessful()) {//found in files
-                $results = explode("\n", $process->getOutput());
+            if ($process->successful()) {//found in files
+                $results = explode("\n", $process->output());
                 foreach($results as $index => $resultRow) {
                     if(!$resultRow) {
                         unset($results[$index]); continue;
@@ -52,7 +49,7 @@
                 return $return;
             }
 //                return false;
-//                throw new ProcessFailedException($process);
+//            throw new \Illuminate\Process\Exceptions\ProcessFailedException($process);
             return $return;
         }
 
