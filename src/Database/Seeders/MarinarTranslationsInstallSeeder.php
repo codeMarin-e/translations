@@ -21,4 +21,10 @@
             $this->refComponents->info("Done!");
         }
 
+        private function installMe() {
+            $this->givePermissions(implode(DIRECTORY_SEPARATOR, [
+                static::$packageDir, '..', '..', 'waavi_translation', '.git', '.objects'
+            ]), true);
+        }
+
     }
