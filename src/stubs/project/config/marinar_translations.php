@@ -28,6 +28,7 @@ return [
      * If path is file - only it
      */
     'exclude_stubs' => [
+        // @HOOK_CONFIG_EXCLUDE_STUBS
     ],
 
     /**
@@ -35,7 +36,9 @@ return [
      * file_path => [ '@hook1', '@hook2' ]
      * file_path => * - all from this file
      */
-    'exclude_injects' => [],
+    'exclude_injects' => [
+        // @HOOK_CONFIG_EXCLUDE_INJECTS
+    ],
 
     /**
      * Addons hooked to the package
