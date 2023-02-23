@@ -24,11 +24,6 @@
             "module": true,
             "plugin": false,
             "addon_to": false
-        },
-        "laravel": {
-            "aliases": {
-                "MarinarTranslations": "Marinar\\Translations\\MarinarTranslations"
-            }
         }
     }
 }
