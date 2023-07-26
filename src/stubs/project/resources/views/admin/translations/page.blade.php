@@ -115,12 +115,16 @@
         </thead>
         @foreach($groups as $group)
             @if($chGroup != 'all' && $chGroup != $group) @continue @endif
+            @php
+                $chDirGroup = dirname($group);
+                $chDirGroup = $chDirGroup === '.'? '' : $chDirGroup;
+            @endphp
             <tbody>
                 <tr scope="row">
                     <td scope="col" colspan='2' style="cursor: pointer;"
                         class="text-center js_group @if($chGroup == $group || $loop->count == 1) bg-success @else bg-warning @endif"
                         data-namespace="{{$chNamespace}}"
-                        data-dir="{{!in_array($chDir, ['in', 'all'])? $chDir.DIRECTORY_SEPARATOR.dirname($group) : dirname($group)}}"
+                        data-dir="{{!in_array($chDir, ['in', 'all'])? trim($chDir.DIRECTORY_SEPARATOR.$chDirGroup, DIRECTORY_SEPARATOR) : $chDirGroup}}"
                         data-group_value="{{basename($group)}}"
                         data-group="{{$group}}">
                         <strong class="align-middle">{{$group}}</strong>

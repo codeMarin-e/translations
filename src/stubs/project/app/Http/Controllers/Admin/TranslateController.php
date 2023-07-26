@@ -13,7 +13,7 @@
     use Illuminate\Support\Str;
     use League\Flysystem\Filesystem;
     use Illuminate\Support\Facades\Process;
-    use Waavi\Translation\Models\Translation;
+    use App\Models\Translation;
     use Illuminate\Support\Facades\Validator;
 
     class TranslateController extends Controller {
